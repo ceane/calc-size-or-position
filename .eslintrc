@@ -1,0 +1,31 @@
+{
+  "parser": "babel-eslint",
+  "rules": {
+    "strict": 0,
+    "constructor-super": 2,
+    "no-this-before-super": 2,
+    "prefer-const": 2,
+    "no-empty": 2,
+    "no-use-before-define": 2,
+    "eqeqeq": 2,
+    "no-underscore-dangle": 0,
+    "no-dupe-keys": 2,
+    "no-console": 1,
+    "indent": [2, 2],
+    "quotes": [2, "double", "avoid-escape"]
+  },
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "env": {
+    "amd": true,
+    "browser": true,
+    "commonjs": true,
+    "es6": true
+  },
+  "globals": {
+    "fetch": true,
+    "unescape": true,
+    "google": true
+  }
+}
