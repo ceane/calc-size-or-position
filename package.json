@@ -6,9 +6,8 @@
   "scripts": {
     "build:webpack": "set NODE_ENV=production&& webpack --config webpack.config.prod.js",
     "build": "npm run clean && npm run build:webpack",
-    "clean": "rimraf ../js",
-    "_prestart": "babel-node ./__start",
-    "start": "set NODE_ENV=development&& node devServer.js",
+    "clean": "rimraf ./dist",
+    "start": "set NODE_ENV=development&& webpack --config webpack.config.dev.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint src"
   },
