@@ -1,5 +1,5 @@
 {
-  "name": "calcSizeOrPosition",
+  "name": "calc-size-or-position",
   "version": "0.1.0",
   "description": "Calculates a size or position",
   "main": "index.js",

@@ -17,7 +17,9 @@ module.exports = {
   output: {
     path: path.join(__dirname, "dist"),
     filename: "index.js",
-    library: pkg.name,
+    library: pkg.name.replace(/-[a-z]/, function(m, c) {
+      return c.toUpperCase();
+    }),
     libraryTarget: "umd",
     //devtoolModuleFilenameTemplate: "[resource-path]",
     //sourceMapFilename: "[file].map"
