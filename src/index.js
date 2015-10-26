@@ -67,15 +67,25 @@ type Element = {
   fontSize: ?number;
 }
 
-export const PointPosition = {
+export const startPosition = {
   x: 0,
   y: 0
 };
 
-export const PointSize = {
+export const startSize = {
   width: 0,
   height: 0
 };
+
+export const makeSize = (width, height) => ({
+  width,
+  height
+});
+
+export const makePosition = (x, y) => ({
+  x,
+  y
+});
 
 const reverse = (condition, a) => condition ? a.reverse() : a;
 const reverseAuto = (a, b) => a.unit !== CSSAutoValue ? -1 : 0;
@@ -87,6 +97,11 @@ export default function calcSizeOrPosition(
   newSizeOrPosition, 
   child, 
   parent) {
+
+  if (newSizeOrPosition.length === 1 && 
+    newSizeOrPosition[0].unit === CSSZeroValue) {
+    return [0, 0];
+  }
 
   var innerWidth = window.innerWidth;
   var innerHeight = window.innerHeight;
@@ -170,4 +185,16 @@ export default function calcSizeOrPosition(
   }
 
   return reverse(isReversed, finalPositionOrSize);
+}
+
+const unzero = a => a === 0 ? 1 : a;
+
+export const getResizedRatio = (oldSize, newSize) => {
+  var a = oldSize.map(unzero);
+  return [newSize[0] / a[0], newSize[1] / a[1]];
+}
+
+export const recalculatePoint = (point, resizedRatio) => {
+  var newPoint = [].concat(point);
+  return newPoint.map((p, i) => p * resizedRatio[i]);
 }
